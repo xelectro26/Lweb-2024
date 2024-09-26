@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form di Registrazione</title>
+    <link rel="stylesheet" href="2-homework/res/css/Inserimento.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Registrazione Utente</h2>
+        <form action="Inserimento.php" method="post">
+            <!-- Nome Utente -->
+            <label for="nome">Nome Utente:</label>
+            <input type="text" id="nome" name="nome_utente" required>
+            
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <!-- Password -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <!-- Selezione del Paese -->
+            <label for="paese">Paese di origine:</label>
+            <select id="paese" name="paese">
+                <option value="Italia">Italia</option>
+                <option value="Francia">Francia</option>
+                <option value="Spagna">Spagna</option>
+                <option value="Germania">Germania</option>
+            </select>
+            
+            <!-- Accettazione Termini -->
+            <div class="checkbox">
+                <input type="checkbox" id="termini" name="termini" required>
+                <label for="termini">Accetto i Termini e le Condizioni</label>
+            </div>
+            
+            <!-- Pulsante di Invio -->
+            <input type="submit" value="Registrati">
+        </form>
+    </div>
+
+</body>
+</html
