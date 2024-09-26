@@ -131,7 +131,7 @@ h2 {
 .image-line {
     display: flex;
     margin-top: 45px;
-    background-image: url('img/colonne.avif'); 
+    background-image: url('../../img/colonne.avif'); 
     background-repeat: repeat-x;
     height: 220px; 
     width: 100%; 
@@ -169,7 +169,7 @@ h2 {
 /* Linea di immagini ripetute */
 .image-line {
     margin-top: 45px;
-    background-image: url('img/colonne.avif');
+    background-image: url('../../img/colonne.avif');
     background-repeat: repeat-x; /* Ripete l'immagine orizzontalmente */
     height: 180px; /* Altezza della linea */
     width: 100%; /* Larghezza del contenitore */

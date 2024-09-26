@@ -146,11 +146,11 @@ p {
 .image-line {
     display: flex;
     margin-top: 45px;
-    background-image: url('img/colonne.avif'); 
+    background-image: url('../../img/colonne.avif'); 
     background-repeat: repeat-x;
     height: 220px; 
     width: 100%; 
-}
+} 
 
 .capitello {
  
