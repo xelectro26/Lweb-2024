@@ -1,0 +1,202 @@
+
+body {
+    background-color: #EAE6CA;
+}
+
+.header {
+    color: #010101;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    height: 15px;
+}
+
+.header h1 {
+    margin: 0; /* Rimuove il margine predefinito */
+    font-size: 39px; 
+    text-align: center; 
+}
+
+/* Separatore orizzontale */
+.title-line {
+    border: none;
+    height: 2px;
+    background-color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Contenitore centrale */
+.container {
+    text-align: center;
+    margin-top: 35px;
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 23px;
+}
+
+/* Stile delle sezioni dei libri */
+.sezione {
+    display: flex;
+    flex-wrap: wrap; /* Permette ai libri di andare a capo */
+    justify-content: space-between; /* Spaziatura uniforme tra i libri */
+    padding: 20px 0; /* Padding verticale */
+}
+
+/* Menu laterale */
+.menu {
+    height: 100%;
+    width: 0; /* Inizialmente nascosto */
+    position: fixed; /* Rimane fisso durante lo scorrimento */
+    top: 0; /* Posizionato in alto */
+    left: 0; /* Posizionato a sinistra */
+    background-color: #333; 
+    overflow-x:hidden; /* Nasconde eventuali elementi che fuoriescono orizzontalmente */
+    transition: 0.5s; /* Transizione dolce per l'apertura/chiusura */
+    padding-top: 60px; /* Spazio per i contenuti in alto */
+}
+
+/* Stile per i link del menu */
+.menu a {
+    padding: 10px 15px; /* Spazio interno ai link */
+    text-decoration:dashed; /* Rimuove la sottolineatura */
+    font-size: 22px; 
+    color: white; 
+    display: block; /* Ogni link occupa un'intera riga */
+    transition: 0.3s; /* Transizione dolce per effetti hover */
+}
+
+/* Stile per il link al passaggio del mouse */
+.menu a:hover {
+    background-color: #f0f0f0; /* Colore di sfondo al passaggio del mouse */
+    color: #333; /* Cambia il colore del testo se desiderato */
+}
+
+/* Bottone per chiudere il menu */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* Pulsante menu (icona hamburger) */
+.menu-button {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+/* Linea di immagini ripetute */
+.image-line {
+    margin-top: 45px;
+    background-image: url('img/colonne.avif');
+    background-repeat: repeat-x; /* Ripete l'immagine orizzontalmente */
+    height: 180px;
+    width: 100%;
+}
+
+/* Stile per ciascun libro */
+.libro {
+    display: flex; /* Modello di layout flexbox per il contenitore */
+    flex-direction: row; /* Direzione principale degli elementi flessibili */
+    gap: 20px; /* Spazio tra immagine e informazioni */
+    width: 48%; /* Larghezza dei libri per avere due per riga */
+    margin-bottom: 20px; /* Margine inferiore per separare le righe */
+}
+
+.immagine {
+    flex-shrink: 0; /* Evita la compressione del contenitore */
+}
+
+.immagine img {
+    width: 200px; 
+    height: auto; /* Altezza automatica per mantenere le proporzioni */
+    border: 1px solid #ccc; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra attorno all'immagine */
+}
+
+.info-libro {
+    max-width: 60%; /* Larghezza massima della sezione informazioni */
+}
+
+.info-libro p {
+    margin: 5px 0;
+}
+
+.info-libro h2 {
+    margin-bottom: 10px;
+}
+
+/* Stile della frase finale */
+.frase-finale h2 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #8B0000;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.frase-finale p {
+    font-family: 'Times New Roman', Times, serif;
+    color: #B22222;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* Gestione stile dei capitelli e del tooltip */
+.image-line {
+    display: flex;
+    margin-top: 45px;
+    background-image: url('../../img/colonne.avif'); 
+    background-repeat: repeat-x; /* Ripete l'immagine orizzontalmente */
+    height: 220px; 
+    width: 100%; 
+} 
+
+.capitello {
+    position: relative; 
+}
+
+.area {
+    background: rgba(0, 0, 0, 0.0);
+    padding: 8px; 
+    border-radius: 19px;
+    width: 80px; 
+    text-align: center; 
+    display: flex;
+    height: 90px;
+}
+
+.tooltip {
+    position: absolute; 
+    background: rgba(255, 255, 255, 0.9); 
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    display: none; 
+    z-index: 10;
+}
+
+/* Mostra il tooltip quando si passa il mouse sopra l'area */
+.area:hover + .tooltip {
+    display: block; 
+}
+
+/* Separatore con linea e immagine */
+.separator {
+    display: flex; /* Usa flexbox per allineare l'immagine */
+    align-items: center; /* Allinea gli elementi verticalmente al centro */
+    margin: 20px 0; /* Margine verticale per il separatore */
+    position: relative; /* Posizionamento relativo per il contenitore del separatore */
+}

@@ -1,0 +1,242 @@
+/* Stile generale del body */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Semplificato per uniformità */
+    margin: 0;
+    padding: 0;
+    background-color: #EAE6CA;
+}
+
+/* Intestazione */
+.header {
+    color: #050000; 
+    display: flex; /* Usa Flexbox per il layout */
+    justify-content: center; 
+    padding: 5px; 
+    position: relative; 
+    height: 15px; 
+    margin-top: 5px; /* Imposta a 0 per spostare il titolo più in alto */
+    margin-bottom: 10px; /* Aggiungi un margine inferiore se necessario */
+}
+
+/* Stile per il titolo principale */
+h1 {
+    margin: 0; /* Rimuove il margine predefinito */
+    font-size: 39px; 
+    text-align: center; 
+}
+
+/* Contenitore principale */
+.container {
+    text-align: center; 
+    margin-top: 37px; 
+    max-width: 100%; 
+    height: auto; 
+}
+
+/* Stile per la linea del titolo */
+.title-line {
+    border: none; /* Rimuove il bordo predefinito */
+    height: 2px; /* Spessore della linea */
+    background-color: #333; 
+    margin-top: 0; 
+    margin-bottom: 20px; 
+}
+
+/* Stile del menu laterale */
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 100; /*cosi che il menu non si sovrapponga con gli eventi*/
+}
+
+/* Stile per i link all'interno del menu */
+.menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Stile per il link al passaggio del mouse */
+.menu a:hover {
+    background-color: #f0f0f0; /* Colore di sfondo al passaggio del mouse */
+    color: #333; /* Cambia il colore del testo se desiderato */
+}
+
+.menu a:hover {
+    background-color: #575757; /* Colore di sfondo al passaggio del mouse */
+}
+
+/* Pulsante del menu (hamburger) */
+.menu-button {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 35px; 
+    height: 35px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer; 
+}
+
+/* Bottone per chiudere il menu */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* Sezione recensioni */
+.recensioni-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Sezione delle recensioni */
+.recensioni-lista {
+    max-width: 800px; /* Larghezza massima della sezione recensioni */
+    margin: 0 auto; /* Centra la sezione */
+    padding: 20px; /* Padding interno */
+}
+
+/* Singola recensione */
+.recensione {
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.recensione img {
+    max-width: 150px; /* Larghezza massima dell'immagine */
+    margin-right: 15px; /* Margine destro per distanziare l'immagine dal testo */
+}
+
+.recensione-content {
+    flex: 1; /* Occupa lo spazio rimanente */
+}
+
+.recensione-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.data {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.commento {
+    font-size: 1em;
+    color: #444;
+}
+
+.utente {
+    font-size: 0.9em;
+    color: #229ae4;
+}
+
+.titolo {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.scritto-da {
+    color: grey; /* Colore per "Scritto da:" */
+}
+
+/* Contenitore per il nome utente */
+.username-container {
+    text-align: center; 
+    margin: 20px 0; 
+    padding: 10px; 
+    background-color: #f0f0f0; 
+    border-radius: 5px;
+}
+
+.immagine-evento {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.username {
+    color: #007BFF; /* Colore per il nome utente */
+    font-weight: bold;
+}
+
+/* Gestione stile dei capitelli e del tooltip */
+.image-line {
+    display: flex;
+    margin-top: 45px;
+    background-image: url('../../img/colonne.avif'); 
+    background-repeat: repeat-x;
+    height: 220px; 
+    width: 100%; 
+}
+
+.area {
+    background: rgba(0, 0, 0, 0.0);
+    padding: 8px; 
+    border-radius: 19px;
+    width: 80px; 
+    text-align: center; 
+    display: flex;
+    height: 90px;
+}
+
+.tooltip {
+    position: absolute; 
+    background: rgba(255, 255, 255, 0.9); 
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    display: none; 
+    z-index: 10;
+}
+
+.capitello {
+    position: relative; 
+}
+
+.descrizione, .ringraziamenti {
+    text-align: center;
+    font-size: 22px;
+    color: #100101;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.area:hover + .tooltip {
+    display: block; 
+}
+
+.frase-finale {
+    font-size: 18px;
+    text-align: center;
+}

@@ -1,0 +1,241 @@
+/* Stile generale del body */
+body {
+    background-color: #EAE6CA;
+}
+
+/* Separator */
+.separator {
+    border: none;
+    height: 2px; /* Spessore */
+    background-color: #333;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Intestazione */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Titolo principale */
+h1 {
+    margin: 0; /* Rimuove il margine predefinito */
+    font-size: 39px; 
+    text-align: center; 
+}
+
+/* Stile per i paragrafi generali */
+p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+}
+
+/* Sezione Eventi */
+.sezione {
+    margin: 20px 10px;
+    padding: 45px;
+    padding-bottom: 100px; /* Aggiunto padding inferiore */
+}
+
+/* Layout per l'evento */
+.evento {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    min-height: 350px; /* Altezza minima */
+    padding: 15px; /* Aggiunto padding per aumentare le dimensioni */
+}
+
+.evento:hover {
+    transform: scale(1.02);
+    z-index: 5;
+}
+
+/* Stile per le immagini degli eventi */
+.event-images {
+    display: flex; /* Usa flexbox per allineare orizzontalmente */
+    justify-content: center; /* Centra le immagini */
+    flex-wrap: wrap; /* Consente di andare a capo se necessario */
+    margin: 50px 0; /* Margine verticale */
+}
+
+.event-container {
+    margin: 10px; /* Margine tra i contenitori */
+    text-align: center; /* Centra il testo */
+    cursor: pointer; /* Mostra il puntatore quando si passa sopra */
+    width: 220px; /* Larghezza aumentata per i contenitori delle immagini */
+    border: 1px solid #ccc; /* Bordo intorno all'evento */
+    border-radius: 8px; /* Arrotonda gli angoli */
+    padding: 15px; /* Aggiunto padding per aumentare le dimensioni */
+    transition: transform 0.2s; /* Effetto al passaggio del mouse */
+    background-color: #fff; /* Sfondo bianco per il contenitore */
+}
+
+.event-container:hover {
+    transform: scale(1.05); /* Ingrandisce leggermente l'immagine al passaggio del mouse */
+}
+
+.event-container img {
+    width: 100%; /* Larghezza al 100% del contenitore */
+    height: auto; /* Mantiene le proporzioni */
+    border-radius: 5px; /* Aggiunge un bordo arrotondato */
+}
+
+.event-container img.selected {
+    border: 2px solid #007bff; /* Bordo blu quando selezionato */
+}
+
+/* Titolo sotto l'immagine */
+.event-container h3 {
+    margin-top: 5px; /* Margine sopra il titolo */
+    font-size: 1em; /* Dimensione del font */
+}
+
+/* Linea separatrice tra eventi */
+hr {
+    display: none;
+}
+
+/* Impostazioni responsive */
+@media (max-width: 800px) {
+    .sezione {
+        grid-template-columns: 1fr; /* Su schermi piccoli, una colonna */
+    }
+}
+
+/* Stile del menu laterale */
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 100; /* Assicurati che il menu abbia un z-index alto */
+}
+
+/* Stile per i link all'interno del menu */
+.menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Stile per il link al passaggio del mouse */
+.menu a:hover {
+    background-color: #f0f0f0; /* Colore di sfondo al passaggio del mouse */
+    color: #333; /* Cambia il colore del testo se desiderato */
+}
+
+/* Stile del bottone menu (hamburger) */
+.menu-button {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 35px; 
+    height: 35px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer; 
+}
+
+/* Bottone per chiudere il menu */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* Sezione Recensione */
+.recensione-container {
+    text-align: center;
+    margin: 20px 0; /* Margini verticali per distanziare la sezione */
+}
+
+.recensione-title {
+    font-size: 24px; /* Dimensione del font per il titolo */
+    margin-bottom: 10px; /* Margine sotto il titolo */
+}
+
+.recensione-textbox {
+    width: 80%; 
+    max-width: 600px; 
+    height: 150px;
+    border-radius: 5px; /* Arrotonda gli angoli */
+    border: 1px solid #ddd; 
+    padding: 10px; /* Padding interno */
+    font-size: 16px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    resize: none; /* Disabilita il ridimensionamento */
+}
+
+.recensione-button {
+    margin-top: 10px; /* Margine sopra il bottone */
+    padding: 10px 20px; /* Padding per il bottone */
+    background-color: #007bff; 
+    color: white; 
+    border: none; /* Rimuove il bordo */
+    border-radius: 5px; /* Arrotonda gli angoli */
+    cursor: pointer; /* Cambia il cursore al passaggio */
+    transition: background-color 0.3s; /* Transizione per l'effetto hover */
+    display: block; /* Fa in modo che il bottone occupi tutta la larghezza */
+    width: fit-content; /* Adatta la larghezza al contenuto */
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.recensione-button:hover {
+    background-color: #0056b3; /* Colore di sfondo al passaggio */
+}
+
+/* Gestione stile dei capitelli e del tooltip */
+.image-line {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    background-image: url('../../img/colonne.avif'); 
+    background-repeat: repeat-x;
+    height: 150px; 
+    width: 100%; 
+}
+
+.capitello {
+    position: relative; 
+}
+
+.area {
+    background: rgba(0, 0, 0, 0.0);
+    padding: 8px; 
+    border-radius: 19px;
+    width: 80px; 
+    text-align: center; 
+    display: flex;
+    height: 90px;
+}
+
+.tooltip {
+    position: absolute; 
+    background: rgba(255, 255, 255, 0.9); 
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    display: none; 
+    z-index: 10;
+}
+
+.area:hover + .tooltip {
+    display: block; 
+}
