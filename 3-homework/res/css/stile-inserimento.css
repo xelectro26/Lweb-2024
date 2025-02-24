@@ -1,0 +1,172 @@
+/* Importa il font in stile romano */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Stile generale del body */
+body {
+    background-image: url('../../img/img_sfondo/best2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Cinzel', serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* HEADER */
+.header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 2px solid #bbb;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.evento-img-container {
+    margin-top: 10px;
+}
+
+#evento-img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: none;
+}
+
+h1 {
+    margin: 0;
+    font-size: 42px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #5a3e1b;
+}
+
+/* Sezione generale */
+.sezione {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 25px;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 1200px;
+}
+
+/* Form recensioni */
+.recensione-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border: 2px solid #d4af37;
+}
+
+.recensione-container h2 {
+    font-size: 24px;
+    color: #8b4513;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+label {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 600;
+    color: #5a3e1b;
+}
+
+textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d4af37;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b8860b;
+}
+
+/* MENU LATERALE */
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(51, 51, 51, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 100;
+}
+
+.menu a {
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f4c542;
+}
+
+/* MENU BUTTON */
+.menu-button {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.menu-button img {
+    width: 100%;
+    height: auto;
+}
+
+/* MENU CHIUSURA */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    .sezione {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    .recensione-container {
+        width: 90%;
+    }
+}

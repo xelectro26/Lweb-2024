@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventi xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="eventi.xsd">
+    <event>
+        <titolo>Mostra Archeologica: Le Meraviglie di Roma Antica</titolo>
+        <data>2024-11-28 16:30:00</data>
+        <luogo>Musei Capitolini</luogo>
+        <descrizione>Una mostra che espone reperti unici dell'antica Roma, con una collezione di statue, mosaici e artefatti mai visti prima.</descrizione>
+        <organizzatore>denis</organizzatore>
+        <img>img/img_eventi/museo.jpg</img>
+        <recensioni>
+            <recensione>
+                <utente>denis</utente>
+                <data>2024-10-30</data>
+                <pensiero>La Mostra Archeologica è un viaggio affascinante nel passato. Ogni pezzo esposto racconta una storia unica...</pensiero>
+            </recensione>
+        </recensioni>
+    </event>
+    <event>
+        <titolo>Spettacolo Teatrale: Giulio Cesare</titolo>
+        <data>2024-11-26 18:45:00</data>
+        <luogo>Teatro di Roma</luogo>
+        <descrizione>Un adattamento moderno del dramma shakespeariano, ambientato nella Roma contemporanea.</descrizione>
+        <organizzatore>carmela</organizzatore>
+        <img>img/img_eventi/MuseiCapitolini2.jpg</img>
+        <recensioni>
+            <recensione>
+                <utente>carmela</utente>
+                <data>2024-10-30</data>
+                <pensiero>Lo spettacolo teatrale è una performance straordinaria...</pensiero>
+            </recensione>
+        </recensioni>
+    </event>
+    <event>
+        <titolo>Concerto Sinfonico: Le Quattro Stagioni di Vivaldi</titolo>
+        <data>2024-11-26 15:50:00</data>
+        <luogo>Auditorium Parco della Musica</luogo>
+        <descrizione>Un'emozionante esecuzione dal vivo della famosa opera di Vivaldi...</descrizione>
+        <organizzatore>kila</organizzatore>
+        <img>img/img_eventi/museo2.jpg</img>
+        <recensioni>
+            <recensione>
+                <utente>kila</utente>
+                <data>2024-10-30</data>
+                <pensiero>Il concerto sinfonico è stata un'esperienza magica!</pensiero>
+            </recensione>
+        </recensioni>
+    </event>
+    <event>
+        <titolo>Mostra di Arte Contemporanea: Visioni Urbane</titolo>
+        <data>2024-12-26 15:50:00</data>
+        <luogo>MAXXI - Museo nazionale delle arti del XXI</luogo>
+        <descrizione>Una collezione di opere d'arte contemporanea...</descrizione>
+        <organizzatore>gio</organizzatore>
+        <img>img/img_eventi/teatro2.jpg</img>
+        <recensioni>
+            <recensione>
+                <utente>gio</utente>
+                <data>2024-10-30</data>
+                <pensiero>La mostra 'Visioni Urbane' offre una riflessione profonda sulla vita nelle città moderne...</pensiero>
+            </recensione>
+        </recensioni>
+    </event>
+</eventi>

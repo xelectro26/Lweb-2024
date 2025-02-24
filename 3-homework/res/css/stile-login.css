@@ -1,0 +1,157 @@
+/* Importa il font in stile romano */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Stile generale del body */
+body {
+    background-image: url('../../img/img_sfondo/sfondo2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Cinzel', serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* HEADER */
+.header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 2px solid #bbb;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin: 0;
+    font-size: 42px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #5a3e1b;
+}
+
+/* MENU BUTTON */
+.menu-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-button img {
+    width: 45px;
+    height: 45px;
+}
+
+/* Tooltip */
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu-button:hover .tooltip {
+    display: block;
+}
+
+/* FORM CONTAINER */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    margin-top: 60px;
+    border: 2px solid #d4af37;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #8b4513;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.form-container p {
+    font-size: 22px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background: white;
+}
+
+/* Checkbox */
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox label {
+    font-size: 20px;
+}
+
+.checkbox input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+/* PULSANTE DI INVIO */
+input[type="submit"] {
+    width: 100%;
+    background-color: #d4af37;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #b8860b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+}

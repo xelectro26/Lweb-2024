@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Elemento principale -->
+    <xsd:element name="eventi">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="event" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="titolo" type="xsd:string"/>
+                            <xsd:element name="data" type="xsd:string"/>
+                            <xsd:element name="luogo" type="xsd:string"/>
+                            <xsd:element name="descrizione" type="xsd:string"/>
+                            <xsd:element name="organizzatore" type="xsd:string"/>
+                            <xsd:element name="img" type="xsd:string"/>
+                            <xsd:element name="recensioni" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="recensione" type="Recensione" maxOccurs="unbounded"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Tipo recensione -->
+    <xsd:complexType name="Recensione">
+        <xsd:sequence>
+            <xsd:element name="utente" type="xsd:string"/>
+            <xsd:element name="data" type="xsd:date"/>
+            <xsd:element name="pensiero" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

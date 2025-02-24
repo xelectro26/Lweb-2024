@@ -1,0 +1,209 @@
+/* Importa il font in stile romano da google */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Stile generale del body */
+body {
+    background-color: #EAE6CA; 
+    font-family: 'Cinzel', serif; /* Font elegante in stile romano */
+    color: #333; /* Testo scuro per leggibilità */
+}
+
+/* Intestazione */
+.header {
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo semi-trasparente per un effetto elegante */
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 2px solid #bbb;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container p {
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 9px;
+}
+
+/* Titolo principale */
+h1 {
+    margin: 0;
+    font-size: 42px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #5a3e1b; /* Marrone antico per un look più classico */
+}
+
+/* Stile per i paragrafi generali */
+p {
+    margin-top: 15px;
+    text-align: center; 
+    margin-bottom: 10px; 
+    font-size: 25px;
+}
+
+/* Stile per i paragrafi nel contenitore */
+.container p {
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 9px;
+}
+
+.testo p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-size: 19px;
+}
+
+.testo h2 {
+    font-size: 22px;
+}
+
+/* Stile per la fonte delle foto */
+.foto-fonte {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Stile per la galleria di immagini */
+.galleria {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.galleria img {
+    width: 20%;
+    margin: 0 15px;
+    height: auto;
+}
+
+.immagine {
+    margin-top: 10px;
+    text-align: center;
+}
+
+h2 {
+    text-align: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.title-line {
+    border: none;
+    height: 2px; /* Spessore */
+    background-color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Stile del menu laterale */
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(51, 51, 51, 0.9); /* Sfondo semi-trasparente */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 100;
+}
+
+/* Stile per i link all'interno del menu */
+.menu a {
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Stile per il link al passaggio del mouse */
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f4c542;
+}
+
+/* Stile per il link al passaggio del mouse */
+#dropdown a:hover {
+    background-color: #f0f0f0; /* Colore di sfondo al passaggio del mouse */
+}
+
+
+/* Stile del pulsante per aprire il menu */
+.menu-button {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 200;
+}
+
+/* Bottone per chiudere il menu */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}
+
+.menu-button img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    text-align: center;
+    margin-top: 35px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Gestione stile dei capitelli e del tooltip */
+.image-line {
+    display: flex;
+    margin-top: 45px;
+    background-image: url('../../img/colonne.avif'); 
+    background-repeat: repeat-x;
+    height: 220px; 
+    width: 100%; 
+}
+
+.capitello {
+    position: relative; 
+}
+
+.area {
+    background: rgba(0, 0, 0, 0.0);
+    padding: 8px; 
+    border-radius: 19px;
+    width: 80px; 
+    text-align: center; 
+    display: flex;
+    height: 90px;
+}
+
+.tooltip {
+    position: absolute; 
+    background: rgba(255, 255, 255, 0.9); 
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    display: none; 
+    z-index: 10;
+}
+
+.area:hover + .tooltip {
+    display: block; 
+}
+
+.frase-finale {
+    font-size: 22px;
+}
