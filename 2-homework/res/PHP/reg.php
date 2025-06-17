@@ -1,74 +1,64 @@
 <?php
 session_start();
-require('connection.php'); 
+require('connection.php'); // Usa la connessione $conn già creata
 
-// Crea una nuova connessione al database
-$connessione = new mysqli($host, $user, $password, $db);
-
-// Controlla la connessione
-if ($connessione->connect_error) {
-    die("Connessione fallita: " . $connessione->connect_error);
-}
-
-// Raccogli i dati dal modulo, rimuovi spazi bianchi e protegge da SQL Injection (non il nostro caso poiche siamo in locale)
-$username = $connessione->real_escape_string(trim($_POST['username']));
-$email = $connessione->real_escape_string(trim($_POST['email']));
-$password = $connessione->real_escape_string(trim($_POST['password']));
-$password2 = $connessione->real_escape_string(trim($_POST['password2']));
-$termini = isset($_POST['termini']) ? 1 : 0; // Verifica se i termini sono accettati
-$paese = $connessione->real_escape_string(trim($_POST['paese']));
+// Raccogli i dati dal modulo e rimuovi spazi bianchi
+$username = $conn->real_escape_string(trim($_POST['username']));
+$email = $conn->real_escape_string(trim($_POST['email']));
+$password = $conn->real_escape_string(trim($_POST['password']));
+$password2 = $conn->real_escape_string(trim($_POST['password2']));
+$termini = isset($_POST['termini']) ? 1 : 0;
+$paese = $conn->real_escape_string(trim($_POST['paese']));
 
 // Controlla se l'username esiste già
 $controllo = "SELECT * FROM utenti WHERE username = '$username'";
-$ris = mysqli_query($connessione, $controllo);
+$ris = mysqli_query($conn, $controllo);
 
 if (mysqli_num_rows($ris) > 0) {
     $_SESSION['errore'] = 'true';
-    header('Location: ../../Registrazione.php'); // Reindirizza alla pagina di registrazione
+    header('Location: ../../Registrazione.php');
     exit(1);
 }
 
 // Controlla se l'email esiste già
 $controllo_email = "SELECT * FROM utenti WHERE email = '$email'";
-$ris_e = mysqli_query($connessione, $controllo_email);
+$ris_e = mysqli_query($conn, $controllo_email);
 
 if (mysqli_num_rows($ris_e) > 0) {
     $_SESSION['errore_e'] = 'true';
-    header('Location: ../../Registrazione.php'); // Reindirizza alla pagina di registrazione
+    header('Location: ../../Registrazione.php');
     exit(1);
 }
 
 // Controllo delle password
 if ($password !== $password2) {
     $_SESSION['errore_p'] = 'true';
-    header('Location: ../../Registrazione.php'); // Reindirizza alla pagina di registrazione
+    header('Location: ../../Registrazione.php');
     exit(1);
 }
 
-// Hash della password per la sicurezza
+// Hash della password
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-// Inserisci i dati nel database
+// Inserisci nel DB
 $sql = "INSERT INTO utenti (username, email, password, paese) VALUES ('$username', '$email', '$hashed_password', '$paese')";
-$ins = mysqli_query($connessione, $sql);
+$ins = mysqli_query($conn, $sql);
 
 if ($ins) {
-    // Recupera l'ID dell'utente appena inserito
-    $utente_id = $connessione->insert_id; 
-
-    // Salva l'ID dell'utente, il nome utente e il suo stato di login nella sessione
-    $_SESSION['utente_id'] = $utente_id; // Salva l'ID dell'utente nella sessione
-    $_SESSION['username'] = $username; // Salva il nome utente nella sessione
-    $_SESSION['loggato'] = true; // Imposta la variabile di sessione per indicare che l'utente è loggato
-    header('Location: ../../Homepage.php'); 
+    $utente_id = $conn->insert_id;
+    $_SESSION['utente_id'] = $utente_id;
+    $_SESSION['username'] = $username;
+    $_SESSION['loggato'] = true;
+    header('Location: ../../Homepage.php');
     exit();
 } else {
+    // Stampa errore MySQL se qualcosa va storto
     $_SESSION['errore_v'] = 'Errore durante la registrazione.';
-    header('Location: ../../Registrazione.php'); 
+    // Debug facoltativo:
+    // die("Errore MySQL: " . mysqli_error($conn));
+    header('Location: ../../Registrazione.php');
     exit(1);
-
 }
 
-// Chiusura della connessione
-$connessione->close();
+$conn->close();
 ?>
