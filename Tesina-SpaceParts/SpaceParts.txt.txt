@@ -1,4 +1,5 @@
-Titolo: Gestione di un portale online per la vendita di componenti aerospaziali e robotici – SpaceParts
+SpaceParts: Gestione di un portale online per la vendita di componenti aerospaziali e robotici
+--------------------------------------------------------------------------------------------
 
 Descrizione generale
 
@@ -51,7 +52,9 @@ Amministratore:
 - Aggiunta ed eliminazione FAQ
 - Gestisce le campagne promozionali globali (es. Speciale Artemis II).
 
-  
+[[NB
+La definizione di cosa sono le campagne di promozione globale sara` presente nelle specifiche date nel primo capitolo]]
+ 
 
 Sconti
 -------
@@ -83,4 +86,3 @@ Forum Tecnico e FAQ
 -------------------
 È presente un Forum Tecnico dove gli utenti possono porre domande, condividere soluzioni o discutere problematiche relative a robotica, controllo, elettronica e propulsione.
 È inoltre disponibile una sezione FAQ, gestita dagli amministratori, che raccoglie risposte e approfondimenti tecnici derivanti dalle discussioni del forum.
-
