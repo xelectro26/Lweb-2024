@@ -1,0 +1,1525 @@
+\documentclass[a4paper,12pt]{report}
+
+% --- PACCHETTI PRINCIPALI ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning}
+
+\tikzset{
+    crowfoot o-/.style={circle, draw, fill=white, minimum size=4pt, inner sep=0pt},
+    crowfoot |-/.style={rectangle, draw, minimum size=4pt, inner sep=0pt},
+    crowfoot ||-/.style={rectangle split, rectangle split parts=2, draw,
+                         minimum width=4pt, minimum height=6pt, inner sep=0pt},
+}
+
+% --- LISTINGS (codice) ---
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Colori personalizzati
+\definecolor{codebg}{RGB}{250, 244, 230}
+\definecolor{codenumbers}{gray}{0.45}
+
+\lstset{
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\scriptsize\color{codenumbers},
+    numbersep=8pt,
+    frame=none,
+    showstringspaces=false,
+    breaklines=true,
+    breakatwhitespace=true,
+    columns=fullflexible,
+    keepspaces=true,
+    tabsize=2,
+}
+
+% --- ALTRI PACCHETTI UTILI ---
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{booktabs}
+
+
+\newcommand{\upref}[1]{\hyperref[#1]{\textsuperscript{$\uparrow$}}}
+
+% --- IMPOSTAZIONI DI STILE ---
+\geometry{a4paper, margin=2.5cm}
+\onehalfspacing
+\setlength{\parskip}{6pt}
+
+% --- INTESTAZIONE TESI ---
+\title{\textbf{SpaceParts}\\Piattaforma Tecnica per Componenti Aerospaziali e Robotici}
+\author{Denis G. Boitor}
+\date{Anno Accademico 2025}
+
+\begin{document}
+
+
+\maketitle  % <-- il titolo DEVE precedere l'indice
+
+\clearpage
+
+% --- INDICE DELLA TESINA ---
+\tableofcontents
+
+\clearpage
+
+\chapter{Introduzione e descrizione dei dati}
+
+
+\section{Specifiche introduttive}
+\label{sec:introduzione}
+
+La piattaforma \textbf{SpaceParts} nasce con l’obiettivo di offrire un ambiente completo, strutturato e facilmente navigabile per la gestione, la consultazione e l’acquisto di componenti destinati ad applicazioni aerospaziali, robotiche e di intelligenza artificiale. Essa si rivolge a un pubblico eterogeneo che include studenti, ricercatori, aziende, ingegneri e appassionati del settore, proponendosi come punto di incontro tra ambiti accademici, industriali e divulgativi.
+
+L’accesso alla piattaforma SpaceParts avviene a partire da una pagina homepage visitabile da tutte le tipologie di utenza. Tale pagina fornisce una panoramica sintetica delle categorie merceologiche trattate, presenta i prodotti più rilevanti e mette in evidenza eventuali campagne promozionali globali in corso (come ad esempio eventi speciali dedicati a missioni spaziali, periodi commerciali o ricorrenze tecnologiche).
+
+Il catalogo dei prodotti costituisce il cuore funzionale del sistema. Ogni componente è descritto mediante una scheda tecnica che ne riporta categoria, certificazione (ESA-grade, industrial, educational), anno di produzione, prezzo base, compatibilità con determinati sistemi, missioni a cui è associato, eventuali bonus crediti e sconti attivi. L’utente, anche qualora non autenticato, può sfogliare liberamente le schede tecniche e filtrare la visualizzazione tramite una serie di parametri selezionabili (categoria, fascia di prezzo, anno, certificazione, missione).
+
+La piattaforma prevede la presenza di un sistema di \textbf{recensioni tecniche} che consente agli utenti registrati di contribuire al miglioramento delle informazioni sui prodotti acquistati. Il sistema delle recensioni consente agli utenti di commentare i prodotti acquistati. 
+Ogni recensione contiene un voto (1–5) e un commento tecnico, e rappresenta un feedback puntuale sull’esperienza d’uso del componente. Le recensioni possono ricevere risposte da altri utenti, permettendo brevi discussioni tecniche correlate al prodotto.
+A differenza del forum, non è previsto alcun sistema di voto delle recensioni: 
+ciò garantisce che il sistema mantenga una funzione strettamente informativa, 
+non sociale.
+SpaceParts vuole supportare la ricerca e sviluppo tencologica, perciò presenta all'interno un \textbf{Forum Tecnico}, nella quale gli utenti possono porre domande, avviare discussioni e contribuire con risposte pertinenti a temi quali elettronica avanzata, propulsione, controllo, robotica e software di bordo.
+
+Un elemento fondamentale del sistema è costituito dalla \textbf{reputazione utente}, la quale rappresenta un indicatore dell’affidabilità e della competenza dimostrata dal cliente all’interno della piattaforma.
+Il cliente può partecipare alle discussioni votando i contenuti tramite un sistema di valutazione binario “utile / inutile”, rappresentato da una freccia verso l’alto e una verso il basso. Questo meccanismo permette di far emergere i contributi più pertinenti e influisce sulla reputazione dell’autore. La reputazione dell’utente viene inoltre 
+influenzata dal numero di prodotti acquistati e dall’attività di recensione e dai giudizi ricevuti. Una reputazione più elevata permette agli utenti di accedere a particolari vantaggi, come sconti personalizzati o promozioni mirate.
+
+La piattaforma gestisce inoltre un sistema di \textbf{crediti tecnici} che consente agli utenti autenticati di accumulare bonus in seguito all’acquisto di determinati prodotti o alla partecipazione a eventi promozionali. I crediti possono essere utilizzati come forma di sconto per acquisti futuri oppure ricaricati mediante apposita richiesta, soggetta all’approvazione dell’amministratore.
+
+A livello di gestione amministrativa, il sistema include un modulo dedicato al controllo del catalogo e dei contenuti generati dagli utenti. All'interno di tale modulo, le figure con privilegi superiori possono aggiungere o modificare prodotti, applicare sconti, gestire le recensioni segnalate, approvare richieste di ricarica crediti e moderare i contenuti del forum.
+
+SpaceParts suddivide chiaramente le tipologie di utenza, ciascuna dotata di una serie di funzionalità specifiche e non accessibili ad altre categorie. Le tipologie di utenti previste dalla piattaforma sono le seguenti:
+
+\begin{itemize}
+    \item \textbf{Visitatore} (utente non autenticato);
+    \item \textbf{Cliente}, in grado di acquistare prodotti e contribuire ai contenuti;
+    \item \textbf{Gestore del catalogo}, responsabile della gestione tecnica dei prodotti e delle promozioni;
+    \item \textbf{Amministratore}, responsabile della gestione degli utenti, delle revisioni e dei contenuti.
+\end{itemize}
+
+Ogni ruolo dispone di funzionalità specifiche, alcune delle quali condivise e altre completamente esclusive. Nei paragrafi seguenti tali funzionalità verranno analizzate nel dettaglio, illustrando in modo chiaro e ordinato quali servizi sono disponibili per ciascuna tipologia di utenza.
+
+\medskip
+
+La sezione successiva è dedicata a un’analisi approfondita delle funzionalità specifiche per ogni tipologia di utente.
+
+\section{Funzionalità specifiche}
+\label{sec:funzionalita}
+
+In questa sezione verranno approfondite nel dettaglio tutte le funzionalità
+associate alle tipologie di utenza previste dalla piattaforma SpaceParts.
+
+La piattaforma è progettata in modo da garantire che ciascun utente,
+in relazione alla tipologia con la quale si autentica, possa accedere esclusivamente
+alle funzionalità pertinenti, evitando così sovrapposizioni o accessi non autorizzati
+a contenuti riservati.  
+Le funzionalità sono suddivise in quattro gruppi principali:
+Visitatore, Cliente, Gestore e Amministratore.
+
+
+\subsection{Funzionalità Visitatore}
+\label{sec:visitatore}
+
+Un utente non autenticato viene definito \textbf{Visitatore}. Tale utenza
+ha la possibilità di esplorare liberamente le parti pubbliche della piattaforma,
+senza tuttavia poter interagire con le funzionalità avanzate riservate agli utenti registrati.
+Le funzionalità disponibili sono le seguenti:
+
+\begin{itemize}
+    \item \textbf{Visualizzare il catalogo dei prodotti}.  
+    La homepage permette all’utente di accedere direttamente all’intera lista
+    dei componenti disponibili. Il catalogo è strutturato per categorie
+    (sensori, elettronica di bordo, attuatori, propulsione elettrica,
+    pannelli solari, moduli avionici, ecc.) e ogni voce può essere consultata
+    liberamente.  
+    Selezionando una categoria, l’utente viene reindirizzato a una pagina che
+    elenca i prodotti corrispondenti, ciascuno corredato da un’immagine,
+    un titolo e alcune informazioni tecniche preliminari.
+
+    \item \textbf{Filtrare i prodotti}.  
+    Il visitatore può applicare criteri di filtraggio basati su una o più proprietà:
+    certificazione (ESA-grade, industrial, educational), anno di produzione,
+    intervallo di prezzo, categoria tecnica, o missione spaziale di riferimento
+    (es. “Artemis II”, “Gaia”, “ExoMars”).  
+    Tale funzionalità permette di ridurre rapidamente la lista dei prodotti
+    presentati, facilitando la ricerca di componenti specifici anche a chi
+    non sia un esperto.
+
+    \item \textbf{Accedere alla scheda tecnica di un prodotto}.  
+    Ogni prodotto è associato a una scheda informativa dettagliata
+    contenente descrizione, parametri operativi, requisiti di compatibilità,
+    certificazioni e, in caso di promozioni attive, dettagli relativi a sconti
+    e bonus crediti.  
+    Pur non essendo autenticato, l’utente può esplorare tutte le schede tecniche.
+
+    \item \textbf{Accedere alle sezioni pubbliche: Chi siamo, Missioni, Contatti}.  
+    Queste sezioni offrono contenuti informativi sull’azienda o ente gestore
+    del portale, sulle missioni aerospaziali supportate, e sulle modalità
+    di contatto.
+
+    \item \textbf{Accedere alle FAQ globali}.  
+    Il visitatore può consultare un insieme di domande e risposte di carattere
+    generale riguardanti i prodotti, la piattaforma o gli acquisti.
+
+    \item \textbf{Accedere al Forum Tecnico (sola lettura)}.  
+    L’utente può visualizzare discussioni tecniche attive, ma non può né
+    creare contenuti né rispondere ai messaggi pubblicati.
+
+    \item \textbf{Accedere alle pagine di login}.  
+    Tramite apposito pulsante presente nella barra superiore,
+    il visitatore una volta inserite le credenziali di accesso, sara' cura della piattaforma identificarlo come Cliente, Gestore o
+    Amministratore.
+
+    \item \textbf{Registrarsi alla piattaforma}.  
+    Qualora l’utente desideri usufruire di funzionalità avanzate
+    (come scrivere recensioni o effettuare acquisti),
+    può accedere alla pagina di registrazione, nella quale dovrà fornire
+    i dati richiesti (nome, cognome, email, username e password).
+\end{itemize}
+
+\subsection{Funzionalità Cliente}
+\label{sec:cliente}
+Un utente registrato ed autenticato come \textbf{Cliente} ottiene accesso a
+funzionalità aggiuntive rispetto al Visitatore.  
+
+Le funzionalità disponibili sono le seguenti:
+
+\begin{itemize}
+    \item \textbf{Visualizzare e modificare i propri dati personali}.  
+    Dalla pagina principale dedicata all’utenza Cliente, è possibile accedere
+    a un pannello riepilogativo contenente tutte le informazioni anagrafiche.
+    L’utente può aggiornare alcuni dati, come l’email o la password.
+
+    \item \textbf{Visualizzare lo storico degli acquisti}.  
+    Una sezione dedicata elenca cronologicamente tutti gli ordini effettuati.
+    Ogni ordine include la lista dei prodotti acquistati, le quantità,
+    l’eventuale applicazione di crediti, il totale pagato e la data di acquisto.
+
+    \item \textbf{Gestire il saldo crediti}.  
+    All’interno del profilo utente è presente un indicatore che mostra
+    l’attuale ammontare di crediti tecnici disponibili.
+    L’utente può inoltre inviare una richiesta di ricarica,
+    soggetta all’approvazione dell’amministratore.
+
+    \item \textbf{Aggiungere prodotti al carrello}.  
+    Visitando la scheda tecnica di un prodotto,
+    il cliente può inserirlo nel carrello indicando, quando previsto,
+    la quantità desiderata.
+
+    \item \textbf{Effettuare acquisti}.  
+    L’utente può procedere al checkout visualizzando il riepilogo dell’ordine:
+    prodotti inclusi, sconti applicati, eventuali crediti utilizzabili,
+    totale da pagare e bonus crediti che verranno maturati con l’acquisto.
+
+    \item \textbf{Pubblicare recensioni tecniche}.  
+    A seguito dell’acquisto di un prodotto,
+    l’utente può lasciare una recensione valutando il componente
+    tramite un punteggio da 1 a 5 stelle e un commento tecnico
+    riguardante prestazioni, affidabilità, compatibilità e considerazioni pratiche.
+
+    \item \textbf{Rispondere a recensioni esistenti}.  
+    Una recensione può ospitare una breve discussione tecnica.
+    L’utente può contribuire rispondendo con precisazioni, analisi tecniche
+    o esperienze d’uso.
+
+    \item \textbf{Valutare contenuti del Forum}.
+    Il cliente può partecipare alle discussioni votando i contenuti tramite un sistema 
+    di valutazione binario “utile / inutile”, rappresentato da una freccia verso l’alto 
+    e una verso il basso. Questo meccanismo permette di far emergere i contributi più 
+    pertinenti e influisce sulla reputazione dell’autore.
+
+    \item \textbf{Accedere al Forum Tecnico}.  
+    Il cliente può non solo visualizzare ma anche pubblicare nuovi post
+    e rispondere a discussioni già esistenti.
+
+    \item \textbf{Consultare le FAQ}.  
+    L’utente può visualizzare domande e risposte pubblicate dagli Amministratori.
+\end{itemize}
+
+\subsection{Funzionalità Gestore}
+\label{sec:gestore}
+
+Il ruolo di \textbf{Gestore} rappresenta una figura intermedia tra il Cliente e l’Amministratore, con responsabilità dedicate alla gestione
+del catalogo e alla moderazione dei contenuti tecnici.
+
+Le funzionalità disponibili sono:
+
+\begin{itemize}
+    \item \textbf{Aggiungere nuovi prodotti}.  
+    Il Gestore può compilare un modulo contenente nome, categoria,
+    certificazione, prezzo, anno di produzione, bonus crediti e missioni associate,
+    inserendo così un nuovo componente all’interno del file XML dedicato ai prodotti.
+
+    \item \textbf{Modificare prodotti esistenti}.  
+    Per ogni prodotto registrato, il Gestore può aggiornare informazioni
+    come prezzo, certificazione, descrizione, anno, immagine e bonus.
+
+    \item \textbf{Eliminare prodotti}.  
+    Il sistema impedisce la rimozione di prodotti che risultino associati
+    a ordini già effettuati, in modo da preservare la coerenza storica.
+    In tutti gli altri casi il Gestore può rimuovere liberamente il prodotto.
+
+    \item \textbf{Applicare sconti e bonus}.  
+    Tramite un’interfaccia dedicata, il Gestore può definire sconti temporanei
+    indicando percentuale, condizioni e durata, oppure assegnare bonus crediti.
+
+    \item \textbf{Moderare discussioni e recensioni}.  
+    Il Gestore può intervenire in caso di contenuti tecnici poco accurati,
+    discussioni inappropriate o risposte non conformi allo scopo della piattaforma.
+    È autorizzato a modificare o eliminare contenuti di bassa gravità.
+
+\end{itemize}
+
+\subsection{Funzionalità Amministratore}
+\label{sec:admin}
+
+L’\textbf{Amministratore} è la figura con il livello più elevato di privilegi,
+ha la responsabilità dell’intera piattaforma e può intervenire in qualsiasi
+sezione del sistema.
+
+Le funzionalità disponibili sono:
+
+\begin{itemize}
+    \item \textbf{Gestione completa degli utenti}.  
+    L’amministratore può visualizzare tutte le utenze registrate,
+    modificarne i dati anagrafici, variare il ruolo, sospendere temporaneamente
+    o bannare definitivamente un account.  
+    Il ban temporaneo impedisce l’accesso a sezioni sensibili come recensioni
+    e forum, mentre il ban definitivo impedisce qualsiasi accesso alla piattaforma.
+
+    \item \textbf{Gestione delle recensioni e dei contenuti segnalati}.  
+    L’amministratore può intervenire in caso di recensioni o discussioni
+    ritenute inappropriate o tecnicamente scorrette,
+    modificando o eliminando il contenuto.
+
+    \item \textbf{Gestione delle richieste di ricarica crediti}.  
+    Ogni richiesta effettuata da un cliente passa attraverso un processo di approvazione:
+    l’amministratore può accettare o rifiutare la ricarica,
+    registrando la decisione nei file XML dei crediti.
+
+    \item \textbf{Modifica e gestione del Forum Tecnico}.  
+    L’amministratore ha facoltà di riorganizzare discussioni,
+    bloccare thread, eliminare contenuti e intervenire in caso di violazioni
+    del regolamento.
+
+    \item \textbf{Gestione delle FAQ}.  
+    Può aggiungere nuove domande e risposte,
+    aggiornare le FAQ esistenti o rimuovere contenuti obsoleti.
+
+    \item \textbf{Gestione delle campagne promozionali globali}.  
+    L’amministratore può definire eventi come ``Launch Week'' o
+    ``Speciale Artemis II'', scegliendo durata, categoria interessata,
+    percentuali di sconto e bonus associati.
+    
+\end{itemize}
+
+
+\section{Strutture dati}
+\label{sec:strutture-dati}
+
+In questa sezione verranno illustrate nel dettaglio tutte le strutture dati che
+la piattaforma SpaceParts utilizza per la memorizzazione e la gestione dei
+contenuti:
+
+\begin{itemize}
+    \item una \textbf{tabella SQL} dedicata alla memorizzazione delle informazioni
+          anagrafiche e dei ruoli degli utenti;
+    \item una serie di \textbf{file XML} che rappresentano i contenuti dinamici
+          del sistema (prodotti, recensioni, ordini, forum, FAQ, campagne, crediti).
+\end{itemize}
+
+
+\subsubsection{\texttt{Vincoli Relazionali}}
+
+Di seguito si riportano alcuni vincoli logici per facilitare la comprensione.
+
+\begin{figure}[h!]
+\centering
+
+\begin{tikzpicture}[
+entity/.style={rectangle, draw, rounded corners, text width=4cm, minimum height=1cm, align=center},
+rel/.style={diamond, draw, aspect=2, minimum width=1.8cm, align=center},
+arrow/.style={-latex, thick}
+]
+
+% Entities
+\node[entity] (prodotti) {PRODOTTI};
+\node[entity, right=4cm of prodotti, yshift=1.5cm] (sconti) {SCONTI};
+\node[entity, right=4cm of prodotti, yshift=-1.5cm] (recensioni) {RECENSIONI};
+
+% Relations
+\node[rel, midway, right=2cm of prodotti, yshift=1.5cm] (rel1) {1--N};
+\node[rel, midway, right=2cm of prodotti, yshift=-1.5cm] (rel2) {1--N};
+
+% Arrows
+\draw[arrow] (prodotti) -- (rel1) -- (sconti);
+\draw[arrow] (prodotti) -- (rel2) -- (recensioni);
+
+\end{tikzpicture}
+
+\caption{Diagramma relazionale tra Prodotti, Sconti e Recensioni.}
+\label{fig:er}
+\end{figure}
+
+
+Il diagramma ER (Entity-Relationship) di Crow’s Foot rappresenta la struttura logica delle principali 
+entità coinvolte nella piattaforma \textbf{SpaceParts}. L’entità \textbf{Prodotti} costituisce 
+il nodo centrale del modello e presenta due relazioni di cardinalità uno-a-molti (1–N): 
+una con l’entità \textbf{Sconti}, che descrive le promozioni applicabili a ciascun prodotto, 
+e una con l’entità \textbf{Recensioni}, che raccoglie i contributi pubblicati dagli utenti. 
+La presenza del simbolo a “piede di corvo” indica che un singolo prodotto può essere 
+associato a molteplici sconti e a molteplici recensioni, mentre ogni sconto o recensione 
+deve necessariamente riferirsi a un unico prodotto. Il modello riflette quindi una struttura 
+dati coerente con i requisiti della piattaforma, garantendo estendibilità e integrità 
+
+\subsection{Anagrafica utenti}
+\label{sec: anagrafica-utenti}
+
+La piattaforma prevede una tabella SQL denominata \textbf{utenti} contenente i dati essenziali per la gestione delle credenziali, del ruolo e degli aspetti amministrativi.
+
+
+\subsection*{Utenti}
+
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l l l l}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Vincoli} & \textbf{Descrizione} \\
+\midrule
+
+\texttt{id} & INTEGER & \texttt{PRIMARY KEY, AUTO\_INCREMENT} & Identificativo univoco dell'utente \\
+
+\texttt{username} & VARCHAR(15) & \texttt{UNIQUE, NOT NULL} & Nome utente scelto \\
+
+\texttt{nome} & VARCHAR(15) & \texttt{NOT NULL} & Nome dell'utente \\
+
+\texttt{cognome} & VARCHAR(15) & \texttt{NOT NULL} & Cognome dell'utente \\
+
+\texttt{indirizzo} & VARCHAR(15) & \texttt{NOT NULL} & Indirizzo dell'utente \\
+
+\texttt{email} & VARCHAR(15) & \texttt{UNIQUE, NOT NULL} & Indirizzo email \\
+
+\texttt{password} & VARCHAR(15) & \texttt{NOT NULL} & Password criptata \\
+
+\texttt{ruolo} & ENUM & \texttt{NOT NULL} & Ruolo dell'utente (admin/gestore/cliente) \\
+
+\texttt{reputazione} & FLOAT & \texttt{DEFAULT 0} & Punteggio reputazione \\
+
+\texttt{stato} & INTEGER & \texttt{DEFAULT 1} & Stato account (attivo/disattivo/sospeso) \\
+
+\texttt{portafoglio} & FLOAT & \texttt{DEFAULT 0.00} & Importo disponibile \\
+
+\texttt{crediti} & FLOAT & \texttt{DEFAULT 0} & Crediti tecnici accumulati \\
+
+\texttt{data\_iscrizione} & DATE & \texttt{DEFAULT CURRENT\_DATE} & Data di registrazione \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+\subsection{Struttura dei file XML}
+\label{sec:xml}
+
+Ogni insieme di dati operativi viene gestito tramite un file XML dedicato, seguito dalla relativa grammatica definita tramite XSD, che sar`a poi utilizzata per la gestione dei dati
+all’interno del codice dell’applicazione. I dati relativi agli utenti, come Amministratore, Gestore e Cliente verranno  gestiti tramite PHPMyAdmin, un'applicazione web che consente di amministrare un database MySQL.
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\subsubsection{XML fondamentali}
+\subsection*{Utenti}
+
+Il file \texttt{utenti.xml} contiene esclusivamente informazioni non sensibili
+relative ai profili degli utenti.
+
+Le credenziali (username, password) e i ruoli amministrativi sono invece gestiti
+tramite database MySQL, garantendo sicurezza e corretta separazione dei dati.
+
+\subsection*{utenti.xml}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<utenti xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="utenti.xsd">
+
+  <utente id="1">
+    <nome>Admin</nome>
+    <cognome>Admin</cognome>
+    <telefono>3204012230</telefono>
+    <indirizzo>Via Latina</indirizzo>
+    <reputazione>0</reputazione>
+    <portafoglio>0</portafoglio>
+    <crediti>0</crediti>
+    <data_iscrizione>2025-01-01</data_iscrizione>
+  </utente>
+
+</utenti>
+\end{lstlisting}}
+
+\subsection*{utenti.xsd}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="utenti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="utente" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" type="xs:string"/>
+              <xs:element name="cognome" type="xs:string"/>
+              <xs:element name="telefono" type="xs:string"/>
+              <xs:element name="indirizzo" type="xs:string"/>
+              <xs:element name="reputazione" type="xs:integer"/>
+              <xs:element name="portafoglio" type="xs:decimal"/>
+              <xs:element name="crediti" type="xs:decimal"/>
+              <xs:element name="data_iscrizione" type="xs:date"/>
+            </sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}}
+
+% ------------------------------------------------------
+
+\subsection*{Prodotti}
+\label{sec:catalogo}
+Il file XML dedicato ai \textbf{prodotti} memorizza l’intero catalogo tecnico della piattaforma SpaceParts.  
+Ogni elemento \texttt{<prodotto>} contiene un identificativo univoco e i principali attributi utilizzati dal sistema:
+nome, categoria, descrizione, prezzo, bonus crediti, certificazione, anno di produzione, missione associata e percorso dell’immagine rappresentativa.  
+
+
+\subsubsection*{Prodotti.XML}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<prodotti>
+  <prodotto id="1">
+    <nome>Unità di Controllo Avionica A320-X</nome>
+    <categoria>Avionica</categoria>
+    <descrizione>
+      Modulo avionico ad alta affidabilità con processore
+      rad-hard certificato ESA.
+    </descrizione>
+    <prezzo>2950.00</prezzo>
+    <bonus_crediti>30</bonus_crediti>
+    <certificazione>ESA-grade</certificazione>
+    <anno_produzione>2024</anno_produzione>
+    <missione>Artemis II</missione>
+    <immagine>a320x_control_unit.jpg</immagine>
+  </prodotto>
+  <prodotto id="2">
+    <nome>Sensore Termico T900 UltraSense</nome>
+    <categoria>Sensori</categoria>
+    <descrizione>
+      Sensore termico con precisione a 0.01°C,
+      ideale per sistemi robotici e controllo satelliti.
+    </descrizione>
+    <prezzo>690.00</prezzo>
+    <bonus_crediti>7</bonus_crediti>
+    <certificazione>Industrial</certificazione>
+    <anno_produzione>2023</anno_produzione>
+    <missione>Earth Observation</missione>
+    <immagine>t900_thermal.jpg</immagine>
+  </prodotto>
+        .
+        .
+        .
+</prodotti>
+\end{lstlisting}
+
+\subsubsection*{Prodotti.XSD}
+
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="prodotti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="prodotto" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" type="xs:string"/>
+              <xs:element name="categoria" type="xs:string"/>
+              <xs:element name="descrizione" type="xs:string"/>
+              <xs:element name="prezzo" type="xs:decimal"/>
+              <xs:element name="bonus_crediti" type="xs:integer"/>
+              <xs:element name="certificazione" type="certificazioneType"/>
+              <xs:element name="anno_produzione" type="xs:gYear"/>
+              <xs:element name="missione" type="xs:string"/>
+              <xs:element name="immagine" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="certificazioneType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ESA-grade"/>
+      <xs:enumeration value="Industrial"/>
+      <xs:enumeration value="Space-certified"/>
+      <xs:enumeration value="Educational"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+\end{lstlisting}
+}
+
+% ------------------------------------------------------
+
+\subsection*{Sconti}
+\label{sec:xml-sconti}
+
+Il file \texttt{sconti.xml} contiene l'elenco degli sconti applicabili ai prodotti
+presenti nel catalogo SpaceParts. Ogni elemento \texttt{<sconto>} definisce una
+promozione specifica associata a un singolo prodotto e include:
+
+\begin{itemize}
+    \item \textbf{id\_prodotto}: il prodotto a cui lo sconto si applica;
+    \item \textbf{percentuale}: riduzione percentuale del prezzo;
+    \item \textbf{condizione}: eventuale requisito per attivare lo sconto 
+          (evento promozionale, reputazione minima, ecc.);
+    \item \textbf{data\_inizio} e \textbf{data\_fine}: intervallo temporale di validità.
+\end{itemize}
+
+Questo file supporta il sistema delle promozioni personalizzate e globali,
+integrandosi con le campagne e con il catalogo prodotti.
+
+\subsection*{sconti.xml}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<sconti xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="sconti.xsd">
+
+  <sconto id="1">
+    <id_prodotto>1</id_prodotto>
+    <percentuale>15</percentuale>
+    <condizione>Evento Artemis Week</condizione>
+    <data_inizio>2025-02-01</data_inizio>
+    <data_fine>2025-02-10</data_fine>
+  </sconto>
+
+</sconti>
+\end{lstlisting}}
+
+\subsection*{sconti.xsd}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="sconti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="sconto" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_prodotto" type="xs:integer"/>
+              <xs:element name="percentuale" type="xs:decimal"/>
+              <xs:element name="condizione" type="xs:string"/>
+              <xs:element name="data_inizio" type="xs:date"/>
+              <xs:element name="data_fine" type="xs:date"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}}
+
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\subsection{Sistema recensioni}
+\subsection*{Recensioni}
+\label{sec:xml-recensioni}
+
+Il file \texttt{recensioni.xml} contiene tutte le recensioni tecniche pubblicate
+dagli utenti a seguito dell’acquisto di un prodotto.  
+Ogni elemento \texttt{<recensione>} include:
+
+\begin{itemize}
+    \item \textbf{id\_prodotto}: riferimento al prodotto recensito;
+    \item \textbf{id\_utente}: autore della recensione;
+    \item \textbf{valutazione}: punteggio assegnato (1–5);
+    \item \textbf{commento}: analisi tecnica o impressioni di utilizzo;
+    \item \textbf{data}: data di pubblicazione.
+\end{itemize}
+
+Le risposte alle recensioni non sono incluse in questo file,
+ma sono archiviate separatamente in \texttt{risposte\_recens.xml},
+così da mantenere una struttura più modulare e scalabile.
+
+\subsection*{recensioni.xml}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<recensioni xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="recensioni.xsd">
+
+  <recensione id="1">
+    <id_prodotto>1</id_prodotto>
+    <id_utente>2</id_utente>
+    <valutazione>5</valutazione>
+    <commento>Componente estremamente affidabile.</commento>
+    <data>2025-01-05</data>
+  </recensione>
+
+</recensioni>
+\end{lstlisting}}
+
+\subsection*{recensioni.xsd}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="recensioni">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="recensione" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_prodotto" type="xs:integer"/>
+              <xs:element name="id_utente" type="xs:integer"/>
+              <xs:element name="valutazione" type="xs:integer"/>
+              <xs:element name="commento" type="xs:string"/>
+              <xs:element name="data" type="xs:date"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}}
+
+% ------------------------------------------------------
+
+\subsection*{Risposte alle Recensioni}
+\label{sec:xml-risposte}
+
+Il file \texttt{risposte\_recens.xml} contiene le risposte associate alle recensioni tecniche.
+Ogni risposta si riferisce a una recensione esistente.
+
+\subsection*{risposte\_recens.xml}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<risposte_recens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="risposte_recens.xsd">
+
+  <risposta id="1">
+    <id_recensione>1</id_recensione>
+    <autore>4</autore>
+    <testo>Confermo le ottime prestazioni del modulo avionico.</testo>
+    <data>2025-01-07</data>
+  </risposta>
+
+</risposte_recens>
+\end{lstlisting}
+
+\subsection*{risposte\_recens.xsd}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="risposte_recens">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="risposta" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_recensione" type="xs:integer"/>
+              <xs:element name="autore" type="xs:integer"/>
+              <xs:element name="testo" type="xs:string"/>
+              <xs:element name="data" type="xs:date"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\subsection{Sistema interazione comunità}
+\subsection*{Forum}
+\label{sec:xml-forum}
+
+Il file \texttt{forum.xml} archivia le discussioni tecniche pubblicate dagli utenti.
+Ogni elemento \texttt{<discussione>} contiene:
+
+\begin{itemize}
+    \item \textbf{titolo}: argomento della discussione;
+    \item \textbf{autore}: utente che ha avviato il thread;
+    \item \textbf{data} e \textbf{testo}: contenuto principale;
+    \item \textbf{voti_up/down}: tieni traccia dei voti utili e/o inutili
+    \item risposte interne, rappresentate da elementi \texttt{<risposta>}.
+\end{itemize}
+
+Questo file riflette la struttura lineare del forum, utile per la consultazione
+tecnica collettiva.
+
+\subsection*{forum.xml}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<forum xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="forum.xsd">
+
+  <discussione id="1">
+    <titolo>Problemi di propulsione ionica</titolo>
+    <autore>2</autore>
+    <data>2025-01-03</data>
+    <testo>Qualcuno ha avuto problemi con il modello Helios-I2?</testo>
+    <voti_up>12</voti_up>
+    <voti_down>1</voti_down>
+      <risposta id="1">
+     <autore>3</autore>
+     <data>2025-01-04</data>
+     <testo>Funziona correttamente in condizioni nominali.</testo>
+     <voti_up>12</voti_up>
+     <voti_down>1</voti_down>
+      </risposta>
+
+  </discussione>
+
+</forum>
+\end{lstlisting}}
+
+\subsection*{forum.xsd}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+  <xs:element name="forum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="discussione" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="titolo" type="xs:string"/>
+              <xs:element name="autore" type="xs:integer"/>
+              <xs:element name="data" type="xs:date"/>
+              <xs:element name="testo" type="xs:string"/>
+              <xs:element name="voti_up" type="xs:integer"/>
+              <xs:element name="voti_down" type="xs:integer"/>
+
+              <xs:element name="risposta" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="autore" type="xs:integer"/>
+                    <xs:element name="data" type="xs:date"/>
+                    <xs:element name="testo" type="xs:string"/>
+                    <xs:element name="voti_up" type="xs:integer"/>
+                    <xs:element name="voti_down" type="xs:integer"/>
+
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:integer" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema}
+\end{lstlisting}
+}
+
+% ------------------------------------------------------
+
+\subsection*{FAQ}
+\label{sec:xml-faq}
+
+Il file \texttt{faq.xml} raccoglie le domande più frequenti pubblicate dagli amministratori
+per assistere gli utenti nella navigazione della piattaforma.
+Ogni voce comprende:
+
+\begin{itemize}
+    \item \textbf{quesito}: la domanda formulata;
+    \item \textbf{risposta}: la spiegazione associata.
+\end{itemize}
+
+Tale struttura agevola la gestione centralizzata delle informazioni.
+
+\subsection*{faq.xml}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<faq xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="faq.xsd">
+
+  <domanda id="1">
+    <quesito>Come posso acquistare un componente?</quesito>
+    <risposta>Accedi alla piattaforma e utilizza il carrello.</risposta>
+  </domanda>
+
+</faq>
+\end{lstlisting}}
+
+\subsection*{faq.xsd}
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="faq">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domanda" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="quesito" type="xs:string"/>
+              <xs:element name="risposta" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}
+}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\subsection{Sistema economico}
+\label{sec:xml-economia}
+\subsection*{crediti}
+
+
+Il file \texttt{crediti.xml} registra tutte le operazioni relative al saldo crediti
+degli utenti: bonus ottenuti tramite acquisti, ricariche approvate dagli amministratori
+o rettifiche di sistema.  
+Ogni movimento è identificato da:
+
+\begin{itemize}
+    \item \textbf{id\_utente}
+    \item \textbf{importo}
+    \item \textbf{tipo} (bonus, ricarica, utilizzo)
+    \item \textbf{data}
+\end{itemize}
+
+Questo file garantisce la tracciabilità delle operazioni economiche.
+
+
+\subsection*{crediti.xml}
+
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<crediti xmlns:xmi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="crediti.xsd">
+
+  <movimento id="1">
+    <id_utente>2</id_utente>
+    <importo>50</importo>
+    <data>2025-01-02</data>
+    <tipo>ricarica</tipo>
+  </movimento>
+
+</crediti>
+\end{lstlisting}
+}
+
+\subsection*{crediti.xsd}
+
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="crediti">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="movimento" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_utente" type="xs:integer"/>
+              <xs:element name="importo" type="xs:decimal"/>
+              <xs:element name="data" type="xs:date"/>
+              <xs:element name="tipo" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}
+}
+
+% ------------------------------------------------------
+
+\subsection{Richieste di Ricarica Crediti}
+
+Il file \texttt{rich\_crediti.xml} contiene tutte le richieste di ricarica inviate dagli utenti.
+Ogni richiesta deve essere approvata o rifiutata da un amministratore.
+
+\subsection*{rich\_crediti.xml}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<rich_crediti xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="rich_crediti.xsd">
+
+  <richiesta id="1">
+    <id_utente>3</id_utente>
+    <importo>100</importo>
+    <stato>in_attesa</stato>
+    <data>2025-01-06</data>
+  </richiesta>
+
+</rich_crediti>
+\end{lstlisting}
+
+\subsection*{rich\_crediti.xsd}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="rich_crediti">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="richiesta" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_utente" type="xs:integer"/>
+              <xs:element name="importo" type="xs:decimal"/>
+              <!-- in_attesa, approvata, rifiutata -->
+              <xs:element name="stato" type="xs:string"/>
+              <xs:element name="data" type="xs:date"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}
+
+% ------------------------------------------------------
+
+\subsection*{Campagne promozionali}
+
+Le campagne promozionali consentono all’amministratore di applicare sconti temporanei a insiemi mirati di prodotti.
+Per rendere il sistema più flessibile, ogni campagna può essere associata a una o più categorie del catalogo (ad es. Avionica, Sensori, Propulsione).
+L’elemento <categorie> permette infatti di specificare l’ambito di applicazione della promozione senza intervenire sui singoli prodotti, migliorando modularità e scalabilità del sistema.
+Se nessuna categoria viene indicata, la campagna è considerata globale e si applica all’intero catalogo.
+
+\subsection*{Confronto tra Campagne promozionali e Sconti}
+
+\begin{itemize}
+    \item \textbf{Campagne promozionali}: operano a livello di \textit{categoria},
+    applicando una riduzione di prezzo a gruppi di prodotti omogenei
+    (ad esempio tutti i componenti di Avionica). Si tratta di iniziative globali,
+    pianificate dall’amministratore e legate a periodi o eventi specifici.
+
+    \item \textbf{Sconti}: agiscono a livello di \textit{singolo prodotto}.
+    Ogni sconto è associato a un preciso identificativo di prodotto e può prevedere
+    condizioni particolari (evento promozionale, reputazione minima, promozioni mirate, ecc.).
+\end{itemize}
+
+\noindent In sintesi, le campagne hanno un effetto \textit{esteso} e tematico,
+mentre gli sconti hanno un effetto \textit{puntuale} e mirato.
+
+
+\subsection*{campagne.xml}
+
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<campagne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="campagne.xsd">
+
+  <campagna id="1">
+    <nome>Avionics Boost</nome>
+    <descrizione>Sconti limitati sui moduli avionici certificati.</descrizione>
+    <data_inizio>2025-03-01</data_inizio>
+    <data_fine>2025-03-10</data_fine>
+    <categorie>
+      <categoria>Avionica</categoria>
+      <categoria>Propulsione</categoria>
+    </categorie>
+  </campagna>
+
+  <campagna id="2">
+    <nome>Spring Sensors Week</nome>
+    <descrizione>-20% su tutti i sensori ambientali.</descrizione>
+    <data_inizio>2025-04-01</data_inizio>
+    <data_fine>2025-04-07</data_fine>
+    <categorie>
+      <categoria>Sensori</categoria>
+    </categorie>
+  </campagna>
+        .
+        .
+        .
+</campagne>
+\end{lstlisting}
+}
+
+\subsection*{campagne.xsd}
+
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="campagne">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="campagna" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="nome" type="xs:string"/>
+              <xs:element name="descrizione" type="xs:string"/>
+              <xs:element name="data_inizio" type="xs:date"/>
+              <xs:element name="data_fine" type="xs:date"/>
+
+              <!-- elenco di categorie collegate alla campagna -->
+              <xs:element name="categorie" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="categoria" type="xs:string"                       maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
+\end{lstlisting}
+}
+
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+
+\subsection{Sistema di acquisto}
+\subsection*{Carrello}
+
+Il file \texttt{carrelli.xml} contiene la rappresentazione persistente del carrello
+associato agli utenti. Ogni elemento \texttt{<carello>} identifica il carrello di
+un singolo utente, mentre gli elementi \texttt{<item>} elencano i prodotti
+attualmente presenti nel carrello con la relativa quantità.
+
+\subsection*{carelli.xml}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<carrelli xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="carrelli.xsd">
+
+  <carrello id_utente="1">
+    <item id_prodotto="1" quantita="1"/>
+    <item id_prodotto="4" quantita="2"/>
+  </carrello>
+
+</carrelli>
+
+\end{lstlisting}
+
+\subsection*{carello.xsd}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="carrelli">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="carrello" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="item" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id_prodotto" type="xs:integer" use="required"/>
+                  <xs:attribute name="quantita" type="xs:integer" use="required"/>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+            <xs:attribute name="id_utente" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
+\end{lstlisting}
+
+% ------------------------------------------------------
+
+\subsection*{Ordini}
+
+Il file \texttt{ordini.xml} descrive ogni transazione effettuata dagli utenti,
+includendo prodotti acquistati, quantità, data e totale dell'ordine.
+
+\subsection*{ordini.xml}
+
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<ordini xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="ordini.xsd">
+
+  <ordine id="1">
+    <id_utente>3</id_utente>
+    <data>2025-01-04</data>
+    <totale>3800.00</totale>
+
+    <prodotto id="1" quantita="1"/>
+    <prodotto id="2" quantita="2"/>
+  </ordine>
+
+</ordini>
+\end{lstlisting}
+}
+
+\subsection*{ordini.xsd}
+
+{\footnotesize
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="ordini">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="ordine" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="id_utente" type="xs:integer"/>
+              <xs:element name="data" type="xs:date"/>
+              <xs:element name="totale" type="xs:decimal"/>
+
+              <xs:element name="prodotto" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id" type="xs:integer" use="required"/>
+                  <xs:attribute name="quantita" type="xs:integer" use="required"/>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}
+}
+
+% ------------------------------------------------------
+
+\subsection*{Storico Acquisti}
+
+Il file \texttt{storico\_acq.xml} conserva la cronologia completa degli acquisti
+effettuati dagli utenti, indipendentemente dallo stato del carrello o delle promozioni.
+
+\subsection*{storico\_acq.xml}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<storico_acq xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="storico_acq.xsd">
+
+  <acquisto id="1">
+    <id_utente>3</id_utente>
+    <data>2025-01-04</data>
+    <totale>3800.00</totale>
+    <prodotto id="1" quantita="1"/>
+    <prodotto id="2" quantita="2"/>
+  </acquisto>
+
+</storico_acq>
+\end{lstlisting}
+
+\subsection*{storico\_acq.xsd}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="storico_acq">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="acquisto" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_utente" type="xs:integer"/>
+              <xs:element name="data" type="xs:date"/>
+              <xs:element name="totale" type="xs:decimal"/>
+              <xs:element name="prodotto" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id" type="xs:integer" use="required"/>
+                  <xs:attribute name="quantita" type="xs:integer" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+
+\subsection{Controllo qualità}
+\label{sec:xml-controllo}
+
+
+\subsection*{Segnalazioni}
+
+Il file \texttt{segnalazioni.xml} elenca le segnalazioni inviate dagli utenti
+per errori tecnici, problemi nei prodotti o comportamenti inappropriati nel forum.
+
+\subsection*{segnalazioni.xml}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<segnalazioni xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="segnalazioni.xsd">
+
+  <segnalazione id="1">
+    <id_utente>5</id_utente>
+    <categoria>forum</categoria>
+    <testo>Messaggio non conforme alle linee guida.</testo>
+    <data>2025-01-08</data>
+  </segnalazione>
+
+</segnalazioni>
+\end{lstlisting}
+
+\subsection*{segnalazioni.xsd}
+
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="segnalazioni">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="segnalazione" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_utente" type="xs:integer"/>
+              <xs:element name="categoria" type="xs:string"/>
+              <xs:element name="testo" type="xs:string"/>
+              <xs:element name="data" type="xs:date"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema}
+\end{lstlisting}
+
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+
+\section{Analisi di alcuni elementi e attributi dei linguaggi XML}
+\label{sec:analisi-xml}
+
+In questa sezione vengono analizzati alcuni elementi e attributi scelti a 
+campione dai linguaggi XML definiti nel capitolo precedente.  
+Per ciascun elemento viene giustificata l’esistenza all’interno del modello 
+informativo, facendo riferimento alle specifiche funzionali esposte nelle sezioni
+precedenti.
+
+% --------------------------------------------------------
+\subsection{File \texttt{prodotti.xml}}
+
+\subsubsection*{Attributo \texttt{id}}
+L’attributo \texttt{id} identifica in maniera univoca ogni prodotto del catalogo.  
+La sua presenza è necessaria poiché il prodotto è la risorsa principale 
+richiamata da numerosi altri documenti XML.  
+Come descritto nella Sezione~\ref{sec:catalogo}, la piattaforma deve 
+mantenere riferimenti consistenti ai prodotti durante visualizzazione, ricerca, 
+acquisto e gestione amministrativa.  
+L’identificativo garantisce quindi integrità referenziale tra i vari moduli del sistema.
+
+\subsubsection*{Elemento \texttt{categoria}}
+L’elemento \texttt{categoria}, presente nella sezione ~\ref{sec:catalogo}, permette di classificare i prodotti in gruppi tecnici (ad esempio avionica, sensori, robotica), dove la ricerca deve supportare la selezione per categorie.  
+L’assenza di tale elemento renderebbe impossibile strutturare il catalogo secondo criteri funzionali. Inoltre non permetterebbe l'appliczione di eventuali sconti o promozioni globali
+
+
+% --------------------------------------------------------
+\subsection{File \texttt{sconti.xml}}
+
+\subsubsection*{Elemento \texttt{id\_prodotto}}
+L’elemento collega ogni sconto ad uno specifico prodotto del catalogo.  
+Questa relazione è coerente con il modello relazionale introdotto nella 
+Figura~\ref{fig:er}.  
+Questo elemento, presente nella Sezione~\ref{sec:xml-sconti}, dà la possibilità di applicare promozioni selettive basate su prodotti o categorie.  
+L’elemento \texttt{id\_prodotto} è quindi indispensabile per collegare il prezzo 
+dinamico al prodotto corretto.
+
+\subsubsection*{Elemento \texttt{percentuale}}
+Rappresenta la riduzione di prezzo applicata al prodotto. Una volta definito lo sconto da applicare all'i-esimo utente (in base alla reputazione e/o crediti, campagne promozionali)
+Visitabile nella Sezione~\ref{sec:xml-sconti}, questo valore è quindi necessario per aggiornare dinamicamente il prezzo visualizzato.
+
+% --------------------------------------------------------
+% --------------------------------------------------------
+\subsection{File \texttt{recensioni.xml}}
+
+\subsubsection*{Elemento \texttt{valutazione}}
+L’elemento \texttt{valutazione}, un intero compreso tra 1 e 5, permette agli utenti di esprimere 
+un giudizio sintetico sulle prestazioni e sull’affidabilità del prodotto recensito.  
+Come descritto nella Sezione~\ref{sec:xml-recensioni}, la piattaforma richiede 
+che ogni recensione includa un punteggio numerico standardizzato, così da favorire 
+il confronto immediato tra componenti appartenenti a categorie diverse.  
+In assenza di tale elemento, il sistema di feedback risulterebbe meno strutturato, 
+poiché le opinioni rimarrebbero esclusivamente testuali e meno confrontabili.
+
+\subsubsection*{Elementi \texttt{voti\_up} e \texttt{voti\_down}}
+Questi elementi registrano rispettivamente il numero di valutazioni positive e negative 
+ricevute da una discussione o da una risposta nel forum.  
+Come illustrato nella Sezione introduttiva~\ref{sec:introduzione}, il sistema 
+di voto permette di far emergere i contributi più rilevanti, migliorando la qualità 
+complessiva delle interazioni tecniche. Essi contribuiscono inoltre alla reputazione 
+dell’autore dei contenuti.
+
+
+% --------------------------------------------------------
+\subsection{File \texttt{carrello.xml}}
+
+\subsubsection*{Attributo \texttt{id\_utente}}
+L’attributo \texttt{id\_utente} (vedi Sez.~\ref{sec:xml-economia}) identifica in modo univoco il proprietario del carrello e 
+permette di mantenere lo stato del carrello tra sessioni diverse.  
+il sistema deve garantire che ogni utente disponga di un carrello persistente, capace di conservare prodotti e quantità 
+anche dopo la disconnessione.  
+Senza tale attributo, la piattaforma non potrebbe associare il contenuto del carrello allo 
+specifico utente autenticato.
+
+\subsubsection*{Attributi \texttt{id\_prodotto} e \texttt{quantita}}
+Gli attributi \texttt{id\_prodotto} e \texttt{quantita}, presenti negli elementi \texttt{item},
+descrivono la composizione effettiva del carrello: quali prodotti sono stati aggiunti e in quale quantità.  
+La procedura di finalizzazione 
+dell’ordine si basa proprio sulla riconciliazione tra prodotti nel carrello, sconti attivi e 
+quantità selezionate.  
+La mancanza di tali attributi impedirebbe di ricostruire il riepilogo dell’acquisto,
+rendendo impossibile generare lo scontrino finale o aggiornare correttamente il saldo crediti.
+
+% --------------------------------------------------------
+\subsection{File \texttt{segnalazioni.xml}}
+
+\subsubsection*{Elemento \texttt{categoria}}
+L’elemento \texttt{categoria} (vedi Sez.~\ref{sec:xml-controllo}) distingue il tipo di contenuto oggetto della segnalazione
+(ad esempio: prodotto, recensione, risposta, discussione del forum).  
+Il sistema di moderazione richiede una classificazione precisa per permettere agli amministratori di intervenire 
+in modo mirato a seconda della natura del contenuto segnalato.  
+Questo elemento è quindi fondamentale per indirizzare rapidamente la segnalazione al modulo corretto del sistema (catalogo, recensioni, forum, ecc.).
+
+\subsubsection*{Elemento \texttt{testo}}
+L’elemento \texttt{testo} contiene la descrizione fornita dall’utente riguardo al problema 
+riscontrato.  
+Gli utenti devono essere messi in condizione di motivare chiaramente la propria segnalazione, 
+in modo da assistere i moderatori nell’analisi del caso.  
+Questo campo consente di raccogliere dettagli contestuali indispensabili 
+per distinguere un semplice malinteso da una violazione effettiva delle norme della piattaforma.
+
+
+\end{document}
